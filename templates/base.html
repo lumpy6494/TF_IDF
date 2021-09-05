@@ -1,0 +1,156 @@
+{% load static %}
+{% load count_files %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File_Uploads</title>
+    <meta charset="utf-8">
+    <meta name="description" content="File TF and IDF"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700" rel="stylesheet"/>
+    <link href="{% static 'img/favicon.png' %}" type="image/x-icon" rel="shortcut icon"/>
+    <link href="{% static 'css/screen.css'%}" rel="stylesheet"/>
+    <link href="{% static 'css/table.css'%}" rel="stylesheet"/>
+</head>
+<body class="home" id="page">
+<!-- Header -->
+<header class="main-header">
+    <div class="container">
+        <div class="header-content">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'img/site-identity.png' %}" alt="site identity"/>
+            </a>
+
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="content-box">
+    <!-- Hero Section -->
+    <section class="section section-hero">
+        <div class="hero-box">
+            {% block header %}
+            <div class="container">
+                <div class="hero-text align-center">
+                    <h1>Добро пожаловать!</h1>
+                    <p>Загрузите пожалуйста текстовый файл формата .txt</p>
+                </div>
+                <form class="destinations-form" method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                    <div class="input-line">
+                        {{ form.as_p }}
+                        <!--                         <input name="destination" value="" class="form-input check-value" placeholder="WHAT IS YOUR DESTINATION, SAILOR?" />-->
+                        <button type="submit" name="destination-submit" class="form-submit btn btn-special">Поехали!</button>
+                    </div>
+                </form>
+
+            </div>
+             {% endblock %}
+        </div>
+
+        <!-- Statistics Box -->
+        <div class="container">
+            <div class="statistics-box">
+            {% block count %}
+<!--            количество файлов-->
+            {% count_files %}
+
+            {% endblock %}
+<!---->
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section class="section section-destination">
+        <!-- Title -->
+        {% block content %}
+        <div class="section-title">
+            <div class="container">
+                <h2 class="title">Подсчет TF и IDF </h2>
+                <p class="sub-title">Пожалуйста, загрузите файл с разширение txt чтобы узнать TF и IDF </p>
+            </div>
+        </div>
+        {% endblock %}
+
+
+    </section>
+
+
+</div>
+
+<!-- Footer -->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+<!--            <div class="col-md-5">-->
+<!--                <div class="widget widget_links">-->
+<!--                    <h5 class="widget-title">Top Locations</h5>-->
+<!--                    <ul>-->
+<!--                        <li><a href="#">Lorem impsum dolor</a></li>-->
+<!--                        <li><a href="#">Sit amet consectetur</a></li>-->
+<!--                        <li><a href="#">Adipisicing elit</a></li>-->
+<!--                        <li><a href="#">Eiusmod tempor</a></li>-->
+<!--                        <li><a href="#">incididunt ut labore</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="col-md-5">-->
+<!--                <div class="widget widget_links">-->
+<!--                    <h5 class="widget-title">Featured Boats</h5>-->
+<!--                    <ul>-->
+<!--                        <li><a href="#">Lorem impsum dolor</a></li>-->
+<!--                        <li><a href="#">Sit amet consectetur</a></li>-->
+<!--                        <li><a href="#">Adipisicing elit</a></li>-->
+<!--                        <li><a href="#">Eiusmod tempor</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="col-md-9">-->
+<!--                <div class="widget widget_social">-->
+<!--                    <h5 class="widget-title">Subscribe to our newsletter</h5>-->
+<!--                    <form class="subscribe-form">-->
+<!--                        <div class="input-line">-->
+<!--                            <input type="text" name="subscribe-email" value="" placeholder="Your email address"/>-->
+<!--                        </div>-->
+<!--                        <button type="button" name="subscribe-submit" class="btn btn-special no-icon">Subscribe</button>-->
+<!--                    </form>-->
+
+<!--                    <ul class="clean-list social-block">-->
+<!--                        <li>-->
+<!--                            <a href="#"><i class="icon-facebook"></i></a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="#"><i class="icon-twitter"></i></a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="#"><i class="icon-google-plus"></i></a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="col-md-5">-->
+<!--                <div class="widget widget_links">-->
+<!--                    <h5 class="widget-title">Contact us</h5>-->
+<!--                    <ul>-->
+<!--                        <li><a href="#">Lorem impsum dolor</a></li>-->
+<!--                        <li><a href="#">Sit amet consectetur</a></li>-->
+<!--                        <li><a href="#">Adipisicing elit</a></li>-->
+<!--                        <li><a href="#">Eiusmod tempor</a></li>-->
+<!--                        <li><a href="#">incididunt ut labore</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/functions.js' %}"></script>
+</body>
+</html>
