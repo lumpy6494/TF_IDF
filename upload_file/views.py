@@ -34,7 +34,7 @@ class Home(CreateView):
         try :
             ss = math.log10(len(corpus) / sum([1.0 for i in corpus if word in i ]))
         except ZeroDivisionError:
-            ss = 'Редкое слово'
+            ss = 0
         return  ss
 
 
